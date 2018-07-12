@@ -13,14 +13,9 @@
 
 <script>
 import { formatTime } from '@/utils/index'
-import card from '@/components/card'
 import authService from '../../lib/authService'
 
 export default {
-  components: {
-    card
-  },
-
   data () {
     return {
       logs: []

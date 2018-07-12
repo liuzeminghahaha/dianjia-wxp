@@ -4,7 +4,6 @@
     <div v-for="item in scenarioList">
       {{item.name}}
     </div>
-    <card :text="'我是一个组件'"></card>
     <button @click="getlist">获取数据</button>
     <button @click="goPage">跳转下一页</button>
     <form class="form-container" v-if="!account.name">
@@ -16,7 +15,6 @@
 </template>
 
 <script>
-import card from '@/components/card'
 import { mapActions, mapGetters } from 'vuex'
 import Qs from 'qs'
 import * as types from '../../store/types'
@@ -36,10 +34,6 @@ export default {
       account: 'account'
     })
   },
-  components: {
-    card
-  },
-
   methods: {
     getUserInfo () {
       // 调用登录接口
