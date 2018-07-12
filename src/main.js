@@ -21,35 +21,18 @@ export default {
   config: {
     // 页面前带有 ^ 符号的，会被编译成首页，其他页面可以选填，我们会自动把 webpack entry 里面的入口页面加进去
     pages: [ // 描述当前小程序所有页面路径
-      '^pages/scenario/main',
-      'pages/scenario/scenario-detail/main',
-      'pages/index/main',
-      // ticket
-      'pages/ticket/ticket-wallet/main',
-      'pages/ticket/ticket-deliver/main',
-      'pages/order/order-list/main',
-      'pages/order/order-detail/main'
+      '^pages/index/main'
     ],
     window: { // 小程序所有页面的顶部背景颜色，文字颜色定义
       backgroundTextStyle: 'light',
       navigationBarBackgroundColor: '#fff',
-      navigationBarTitleText: '猎票',
+      navigationBarTitleText: '微信商城',
       navigationBarTextStyle: 'black'
     },
     tabBar: { // tab栏的设置 最少两个，最多五个
       'list': [{
-        'pagePath': 'pages/scenario/main',
-        'text': '购票',
-        'iconPath': 'static/images/star-gray.png',
-        'selectedIconPath': 'static/images/star-red.png'
-      }, {
-        'pagePath': 'pages/ticket/ticket-wallet/main',
-        'text': '票夹',
-        'iconPath': 'static/images/star-gray.png',
-        'selectedIconPath': 'static/images/star-red.png'
-      }, {
-        'pagePath': 'pages/order/order-list/main',
-        'text': '订单',
+        'pagePath': 'pages/index/main',
+        'text': '首页',
         'iconPath': 'static/images/star-gray.png',
         'selectedIconPath': 'static/images/star-red.png'
       }, {
