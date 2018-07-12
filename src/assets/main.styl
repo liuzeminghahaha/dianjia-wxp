@@ -1,0 +1,358 @@
+@import './mixin.styl'
+
+/* page height */
+html,
+body
+  height: 100%
+
+/* for responsive */
+// default html font-size: 16px
+// landscape: when width larger height
+@media only screen and (orientation: landscape) and (max-height: 320px)
+  html
+    font-size: 14px
+@media only screen and (orientation: portrait) and (max-width: 320px) // iphone 5
+  html
+    font-size: 14px
+
+/* app */
+body
+  font-family: "-apple-system", "Helvetica Neue", Roboto, "Segoe UI", sans-serif
+  background-color: $mainBgColor
+  margin: 0
+  // remove gray highlight when click
+  -webkit-tap-highlight-color: transparent
+  // remove user long press event
+  user-select: none
+  &.disable-scroll
+    // overflow-y: hidden // 手机还是可以在 abs-root 域下上下滑动
+    #abs-root
+      overflow-y: hidden // 不在body，它导致 scroll 到顶部
+p
+  margin: 0
+
+/* color class */
+.main-back
+  background-color: $mainColor
+.main-color
+  color: $mainColor
+.gray-color
+  color: $grayColor
+.orange-color
+  color: $orangeColor
+.title-color
+  color: $titleColor
+.info-color
+  color: $infoColor
+.icon-color
+  color: $iconColor
+.green-color
+  color: #69d793
+.light-line
+  border-bottom: 1px solid $lightLineColor
+.heavy-line
+  border-bottom: 1px solid $heavyLineColor
+
+/* other */
+.page-part
+  margin-bottom: 15px
+.tk-search-label
+  .mint-cell-wrapper
+    background: none
+
+/* component */
+.iconfont
+  font-size: 1rem
+  &.icon-lg
+    font-size: 1.2rem
+.iconfont-svg
+  width 1.5rem
+  height 1rem
+  vertical-align -0.15rem
+  fill currentColor
+  overflow hidden
+.arrow-icon
+  position: relative
+  display: inline-block
+  getWH(14)
+  &::after
+    getWH(7)
+    border-color: #bbb
+    right: r(2)
+    top: r(2)
+    transform: rotate(135deg)
+  &.up
+    &::after
+      top: r(6)
+      transform: rotate(-45deg)
+
+.page-infinite-loading
+  text-align: center
+  height: 50px
+  line-height: 50px
+  span
+    display: inline-block
+    vertical-align: middle
+    margin 0 auto
+.pointer
+  display: inline-block
+.spinner
+  display: inline-block
+  margin-top: 7px
+
+/* support */
+.masking-page
+  overflow: hidden
+.hide
+  display: none
+.rotate
+  transform: rotate(180deg)
+.fixed-navbar
+  position: fixed
+  width: 100%
+  top: r(48)
+  z-index: 200
+.ellipsis
+  overflow: hidden
+  text-overflow: ellipsis
+  white-space: nowrap
+.vert-middle
+  vertical-align: middle
+.bg-image
+  background-size: contain
+  background-position: center
+  background-repeat: no-repeat
+  &.cover
+    background-size: cover
+  &.stretch
+    background-size: 100% 100%
+for prop in right center left
+  .text-{prop}
+    text-align: prop
+
+/* flex system */
+.flex-box
+  /* https://css-tricks.com/snippets/css/a-guide-to-flexbox */
+  display: flex
+  for prop in column row
+    &.direction-{prop}
+      flex-direction: prop
+  for prop in space-between space-around
+    &.{prop}
+      justify-content: prop
+  &.flex-wrap
+    flex-wrap: wrap
+  &.align-end
+    align-items: flex-end
+  &.align-center
+    align-items: center
+  &.flex-start
+    justify-content: flex-start
+  &.flex-center
+    justify-content: center
+  &.flex-end
+    justify-content: flex-end
+
+  /* for items */
+  for n in 1 2 3 4 5 6 12
+    .flex-{n}
+      flex: n
+  .flex-item-end
+    align-content: flex-end
+  .flex-self-center
+    align-self: center
+  .flex-self-end
+    align-self: flex-end
+
+// tab item 字体大小，就在这里修改吧，修改太频繁了
+.mint-tab-item-label
+  font-size: 1rem
+.mint-header.is-fixed
+  z-index: 200
+.mint-msgbox-wrapper
+  .mint-msgbox
+    top: 43%
+    transform: translate3d(-50%,-50%,0)
+.mint-cell-allow-right:after
+  border: 1px solid #ccc
+  border-bottom-width: 0
+  border-left-width: 0
+  width: 9px
+  height: 9px
+.mint-cell-wrapper
+  background-image: linear-gradient(180deg,#f5f5f5,#f5f5f5 50%,transparent)
+.mint-toast
+  z-index 3000
+  .mint-toast-wrapper
+    top: 43%
+.mint-indicator
+  z-index: 3600
+  .mint-indicator-wrapper
+    top: 43%
+
+/* 自定义公共样式 */
+.tk-no-background
+  background: none
+.tk-full-width
+  width: 100%
+.tk-no-padding
+  padding: 0
+.tk-no-wrap
+  white-space: normal
+.tk-no-border
+  border: none
+.tk-b-t-0
+  border-top: none
+.tk-b-b-0
+  border-bottom: none
+.tk-b-l-r-0
+  border-right: none
+  border-left: none
+.tk-p-l-r-0
+  padding-left: 0
+  padding-right: 0
+.tk-p-t-b-0
+  padding-top: 0
+  padding-bottom: 0
+.tk-p-xs
+  padding: 5px
+.tk-p-t-0
+  padding-top: 0
+.tk-p-t-xs
+  padding-top: 5px
+.tk-p-t-sm
+  padding-top: 10px
+.tk-p-t-lg
+  padding-top: 20px
+.tk-p-t-xl
+  padding-top: 30px
+.tk-p-r-0
+   padding-right: 0
+.tk-p-r-sm
+  padding-right: 10px
+.tk-p-r-lg
+  padding-right: 20px
+.tk-p-l-0
+  padding-left: 0
+.tk-p-l-sm
+  padding-left: 10px
+.tk-p-l-lg
+  padding-left: 20px
+.tk-p-b-0
+  padding-bottom: 0
+.tk-p-b-xs
+  padding-bottom: 5px
+.tk-p-b-sm
+  padding-bottom: 10px
+.tk-p-b-lg
+  padding-bottom: 20px
+.tk-p-b-xl
+  padding-bottom: 30px
+.tk-m-sm
+  margin: 10px
+.tk-m-t-0
+  margin-top: 0
+.tk-m-t-xs
+  margin-top: 5px
+.tk-m-t-sm
+  margin-top: 10px
+.tk-m-t-lg
+  margin-top: 20px
+.tk-m-b-0
+  margin-bottom: 0
+.tk-m-b-xs
+  margin-bottom: 5px
+.tk-m-b-sm
+  margin-bottom: 10px
+.tk-m-b-lg
+  margin-bottom: 20px
+.tk-m-l-xs
+  margin-left:5px
+.tk-m-l-sm
+  margin-left: 10px
+.tk-m-l-lg
+  margin-left: 20px
+.tk-m-r-xs
+  margin-right: 5px
+.tk-m-r-sm
+  margin-right: 10px
+.tk-m-r-lg
+  margin-right: 20px
+.tk-m-t-b-0
+  margin-top: 0
+  margin-bottom: 0
+
+  /* font size */
+.tk-font-xxs
+  font-size: .6rem
+.tk-font-xs
+  font-size: .7rem
+.tk-font-s
+  font-size: .8rem
+.tk-font-m
+  font-size: .9rem
+.tk-font-sm
+  font-size: 1rem
+.tk-font-lg
+  font-size: 1.2rem
+.tk-font-l
+  font-size: 1.4rem
+.tk-font-xl
+  font-size: 1.5rem
+.tk-font-xxl
+  font-size: 1.8rem
+
+/* font color */
+.tk-lighter-gray
+  color: #fff
+.tk-light-gray
+  color: #aaa
+.tk-lighter-black
+  color: #333
+.tk-stable
+  color: #ccc
+.tk-middle-gray
+  color: #595959
+.tk-dark-gray
+  color: #323232
+.tk-black
+  color: #000
+.tk-orange
+  color: #ff5000
+.tk-orange-dark
+  color: #fe7800
+.tk-orange-light
+  color: #f1ae22
+.tk-purple
+  color: #dc58ce
+.tk-dark-red
+  color: #a12c35
+.tk-positive
+  color: #46c7f3
+.tk-balanced
+  color: #6fd194
+ /* font weight */
+.tk-bold
+  font-weight: bolder
+.tk-pull-right
+  float: right
+.tk-pull-left
+  float: left
+.tk-round-6
+  border-radius: 6px
+
+/* background-color */
+.tk-light-bg
+  background: #fff
+
+/* 下拉刷新组件样式 */
+.tk-loadmore-wrapper
+  overflow: auto
+  -webkit-overflow-scrolling: touch
+
+.highlighter
+  color: $mainColor
+
+/* 选中按钮图标居中 */
+.mint-checkbox-core:after
+  left: 7px !important

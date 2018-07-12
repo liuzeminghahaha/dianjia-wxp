@@ -1,0 +1,20 @@
+/* 这个文件只适合放一些全局函数 或者 全局变量 */
+
+/* color */
+$mainColor = #f34956
+$mainBgColor = #f0f0f0
+$grayColor = #666
+$orangeColor = #fe7800
+$titleColor = #323232
+$infoColor = #808080
+$iconColor = #b3b3b3
+$lightLineColor = #e1e1e1
+$heavyLineColor = #d6d7dc
+
+/* root mixin */
+r(size)
+  (size / 48) * 1rem
+
+getWH(size)
+  height: r(size)
+  width: r(size)
