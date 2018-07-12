@@ -37,7 +37,7 @@
     },
     methods: {
       goPage () {
-//        this.$router.push({path: '/pages/counter/main', query: { id: 1 }})
+        this.$router.push({path: '/pages/counter/main', query: { id: 1 }})
       },
       ...mapActions('ticket', {
         getTicketGroupInfo: types.DO_GET_TICKET_GROUP_INFO,
