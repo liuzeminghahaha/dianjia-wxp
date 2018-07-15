@@ -21,7 +21,8 @@ export default {
   config: {
     // 页面前带有 ^ 符号的，会被编译成首页，其他页面可以选填，我们会自动把 webpack entry 里面的入口页面加进去
     pages: [ // 描述当前小程序所有页面路径
-      '^pages/index/main'
+      '^pages/index/main',
+      'pages/classification/main'
     ],
     window: { // 小程序所有页面的顶部背景颜色，文字颜色定义
       backgroundTextStyle: 'light',
@@ -33,6 +34,11 @@ export default {
       'list': [{
         'pagePath': 'pages/index/main',
         'text': '首页',
+        'iconPath': 'static/images/star-gray.png',
+        'selectedIconPath': 'static/images/star-red.png'
+      }, {
+        'pagePath': 'pages/classification/main',
+        'text': '分类',
         'iconPath': 'static/images/star-gray.png',
         'selectedIconPath': 'static/images/star-red.png'
       }, {

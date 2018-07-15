@@ -27,9 +27,6 @@ export default {
     }
   },
   computed: {
-    ...mapGetters('scenario', {
-      scenarioList: 'scenarioList'
-    }),
     ...mapGetters('account', {
       account: 'account'
     })
