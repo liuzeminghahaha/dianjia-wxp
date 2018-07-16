@@ -3,16 +3,17 @@
     <div class="flex-box">
       <div class="item-image"></div>
       <div class="flex-1 flex-box direction-column space-between">
-        <h3 class="ellipsis2">{{data.title}}</h3>
+        <h3 class="ellipsis2 item-title">{{data.title}}</h3>
         <div>
-          <p>￥{{data.price}}</p>
+          <div class="item-price">￥<span class="price">{{data.price}}</span></div>
           <div class="flex-box space-between">
-            <div class="member-price">
+            <div class="member-price-box">
               <span class="member-price-logo">会员价</span>
-              <span>￥{{data.memberPrice}}</span>
+              <span class="member-price">￥<span class="price">{{data.memberPrice}}</span></span>
             </div>
             <div class="shop-car">
-              <a></a>
+              <a @click="addCar(data)">car</a>
+              <span class="car-count" v-if="data.carCount > 0">{{data.carCount}}</span>
             </div>
           </div>
         </div>
@@ -23,14 +24,22 @@
 
 <script>
   export default {
-    props: [ 'data' ]
+    props: [ 'data' ],
+    methods: {
+      addCar (item) {
+        this.$emit('addCar', item)
+      }
+    }
   }
 </script>
 
 <style lang="stylus" scoped>
+  @import '../assets/mixin.styl'
 
   .classification-item
     border-bottom 1px solid #ccc
+    background #fff
+    padding 20px 20px 10px 10px
   .item-image
     width 30vw
     height 30vw
@@ -40,4 +49,39 @@
     display: -webkit-box
     -webkit-line-clamp: 2
     -webkit-box-orient: vertical
+  .item-title
+    font-size r(16)
+  .item-price
+    color #ff405a
+    font-size r(10)
+    display inline-block
+    transform translateY(8px)
+    .price 
+      font-size r(18)
+  .member-price-logo
+    background orange 
+    color #ffffff
+    padding 2px
+    font-size r(10)
+  .member-price
+    font-size r(10)
+    color orange
+    margin-left 4px
+    .price
+      font-size r(18)
+      font-weight bold
+  .shop-car
+    position relative
+    .car-count
+      position absolute 
+      top 0
+      right -5px
+      width auto 
+      min-width 15px
+      heigth 10px
+      font-size r(10)
+      border-radius 50%
+      color #ffffff
+      background #ff405a
+      text-align center
 </style>

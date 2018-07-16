@@ -34,7 +34,6 @@ export default {
 <style>
   /*在这里引入全局公共的CSS,并且style标签不加scoped,所有页面都有效*/
   @import "assets/scss/main.scss";
-  @import "assets/iconfont/iconfont.css";
 .container {
   height: 100%;
   display: flex;

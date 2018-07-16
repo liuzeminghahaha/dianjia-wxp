@@ -6,13 +6,12 @@
           <li v-for="(item, index) in leftData" :key="index">
             <a class="left-item" @click="leftItemClick(item)" :class="{ 'active': item.active, 'open': item.open }">
               {{ item.name }}
-              <!-- <i class="icon iconfont icon-piaojia1 main-color title-icon-icon"></i> -->
+              <i class="icon-arr" v-if="item.children">></i>
             </a>
             <ul v-if="item.children && item.open" class="left-child-ul" :class="{ 'open': item.open }">
-              <li v-for="(childItem, childIndex) in item.children" :key="childIndex" class="child-item"  @click="childItemClick(item, childItem)">
+              <li v-for="(childItem, childIndex) in item.children" :key="childIndex" class="child-item flex-box direction-column flex-center"  @click="childItemClick(item, childItem)">
                 <a :class="{ 'active': childItem.active }">
                   {{ childItem.name }}
-                  <!-- <i class="icon iconfont icon-piaojia1 main-color title-icon-icon"></i> -->
                 </a>
               </li>
             </ul>
@@ -20,7 +19,7 @@
         </ul>
       </div>
       <div class="flex-1 right-area">
-        <ClassificationItem v-for="(item, index) in rightData" :key="index" :data="item"></ClassificationItem>
+        <ClassificationItem v-for="(item, index) in rightData" :key="index" :data="item" @addCar="addCar"></ClassificationItem>
       </div>
     </div>
   </div>
@@ -288,16 +287,16 @@ export default {
         }
       ],
       rightData: [
-        { title: '美素佳儿儿童配方奶粉4段(3岁以上宝宝使用)', price: 428, memberPrice: 411.86 },
-        { title: '美素佳儿儿童配方奶粉4段(3岁以上宝宝使用)', price: 428, memberPrice: 411.86 },
-        { title: '美素佳儿儿童配方奶粉4段(3岁以上宝宝使用)', price: 428, memberPrice: 411.86 },
-        { title: '美素佳儿儿童配方奶粉4段(3岁以上宝宝使用)', price: 428, memberPrice: 411.86 },
-        { title: '美素佳儿儿童配方奶粉4段(3岁以上宝宝使用)', price: 428, memberPrice: 411.86 },
-        { title: '美素佳儿儿童配方奶粉4段(3岁以上宝宝使用)', price: 428, memberPrice: 411.86 },
-        { title: '美素佳儿儿童配方奶粉4段(3岁以上宝宝使用)', price: 428, memberPrice: 411.86 },
-        { title: '美素佳儿儿童配方奶粉4段(3岁以上宝宝使用)', price: 428, memberPrice: 411.86 },
-        { title: '美素佳儿儿童配方奶粉4段(3岁以上宝宝使用)', price: 428, memberPrice: 411.86 },
-        { title: '美素佳儿儿童配方奶粉4段(3岁以上宝宝使用)', price: 428, memberPrice: 411.86 }
+        { title: '美素佳儿儿童配方奶粉4段(3岁以上宝宝使用)', price: 428, memberPrice: 411.86, carCount: 0 },
+        { title: '美素佳儿儿童配方奶粉4段(3岁以上宝宝使用)', price: 428, memberPrice: 411.86, carCount: 0 },
+        { title: '美素佳儿儿童配方奶粉4段(3岁以上宝宝使用)', price: 428, memberPrice: 411.86, carCount: 0 },
+        { title: '美素佳儿儿童配方奶粉4段(3岁以上宝宝使用)', price: 428, memberPrice: 411.86, carCount: 0 },
+        { title: '美素佳儿儿童配方奶粉4段(3岁以上宝宝使用)', price: 428, memberPrice: 411.86, carCount: 0 },
+        { title: '美素佳儿儿童配方奶粉4段(3岁以上宝宝使用)', price: 428, memberPrice: 411.86, carCount: 0 },
+        { title: '美素佳儿儿童配方奶粉4段(3岁以上宝宝使用)', price: 428, memberPrice: 411.86, carCount: 0 },
+        { title: '美素佳儿儿童配方奶粉4段(3岁以上宝宝使用)', price: 428, memberPrice: 411.86, carCount: 0 },
+        { title: '美素佳儿儿童配方奶粉4段(3岁以上宝宝使用)', price: 428, memberPrice: 411.86, carCount: 0 },
+        { title: '美素佳儿儿童配方奶粉4段(3岁以上宝宝使用)', price: 428, memberPrice: 411.86, carCount: 0 }
       ]
     }
   },
@@ -334,6 +333,10 @@ export default {
       })
       childItem.active = true
       console.log(childItem)
+    },
+    addCar (item) {
+      console.log(item)
+      item.carCount++
     }
   },
   created () {
@@ -342,12 +345,13 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
+  @import '../../assets/mixin.styl'
   .c-box
     heigth 100%
     width 100%
     position relative
     .left-area
-      width 100px
+      width 77px
       height 100%
       position fixed 
       top 0
@@ -358,26 +362,35 @@ export default {
         height 50px
         line-height 50px
         text-align center
-        font-weight bold
+        font-size r(16)
+        font-family 'PingFang-SC-Regular'
+        color #575757
+        .icon-arr
+          width 10px 
+          height 10px
+          display inline-block
         &.active, &.open
           background #fff
+          .icon-arr
+            transform rotate(90deg) translate(20px, -20px)
       .left-child-ul
         background #fff
       .child-item
         width 100%
         height 40px
-        line-height 40px
         text-align center
+        font-size r(12)
+        color #575757
         .active
           background orange
           color #ffffff
-          width 60%
+          width 70%
           height 25px
           line-height 25px
           border-radius 18px
           margin auto
     .right-area
-      margin-left 100px
+      margin-left 77px
       backgroun #fff
       overflow-y auto
     .left-area::-webkit-scrollbar, .right-area::-webkit-scrollbar
