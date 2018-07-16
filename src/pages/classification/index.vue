@@ -19,7 +19,7 @@
         </ul>
       </div>
       <div class="flex-1 right-area">
-        <ClassificationItem v-for="(item, index) in rightData" :key="index" :data="item" @addCar="addCar"></ClassificationItem>
+        <ClassificationItem v-for="(item, index) in rightData" :key="index" :data="item" @addCar="addCar" :type="classification"></ClassificationItem>
       </div>
     </div>
   </div>

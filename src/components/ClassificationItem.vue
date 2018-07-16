@@ -1,7 +1,7 @@
 <template>
   <div class="classification-item" >
     <div class="flex-box">
-      <div class="item-image"></div>
+      <div class="item-image" :class="{'classification': type === 'classification'}"></div>
       <div class="flex-1 flex-box direction-column space-between">
         <h3 class="ellipsis2 item-title">{{data.title}}</h3>
         <div>
@@ -24,7 +24,7 @@
 
 <script>
   export default {
-    props: [ 'data' ],
+    props: [ 'data', 'type' ],
     methods: {
       addCar (item) {
         this.$emit('addCar', item)
